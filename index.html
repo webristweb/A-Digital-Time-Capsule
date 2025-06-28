@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimeVault - Digital Time Capsule</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>TimeVault</h1>
+    <p class="subtitle">A Digital Time Capsule with Biometric & Blockchain Security</p>
+  </header>
+  <div id="biometric-modal" aria-live="polite" aria-modal="true" role="dialog" style="display:none;">
+    <div class="biometric-animation">
+      <div class="scan-icon"></div>
+      <div class="scan-text" id="biometric-modal-text">Scanning...</div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+  <main>
+    <!-- Login Section -->
+    <section id="login-section" class="active" aria-label="Login/Register">
+      <h2>Login / Register</h2>
+      <form id="login-form">
+        <input type="text" id="username" placeholder="Username" required aria-label="Username" />
+        <input type="password" id="password" placeholder="Password" required aria-label="Password" />
+        <button type="button" id="biometric-btn" aria-label="Simulate Biometric Login">Simulate Biometric Login</button>
+      </form>
+      <div id="login-message"></div>
+    </section>
+    <!-- Dashboard Section -->
+    <section id="dashboard-section" aria-label="Dashboard">
+      <h2>Welcome, <span id="user-name"></span></h2>
+      <div id="dashboard-stats"></div>
+      <button id="create-capsule-btn">Create Capsule</button>
+      <button id="unlock-capsule-btn">Unlock Capsule</button>
+      <button id="admin-btn">Admin Panel</button>
+      <button id="logout-btn">Logout</button>
+    </section>
+    <!-- Capsule Creation Section -->
+    <section id="create-capsule-section">
+      <h2>Create Time Capsule</h2>
+      <form id="capsule-form">
+        <textarea id="capsule-message" placeholder="Enter your secret message..." required></textarea>
+        <input type="date" id="unlock-date" required />
+        <input type="file" id="capsule-file" accept="image/*,application/pdf" />
+        <div id="file-preview"></div>
+        <button type="button" id="encrypt-capsule-btn">Encrypt & Save</button>
+      </form>
+      <div id="capsule-create-message"></div>
+      <button id="back-dashboard-btn1">Back to Dashboard</button>
+    </section>
+    <!-- Capsule Unlock Section -->
+    <section id="unlock-capsule-section">
+      <h2>Unlock Capsule</h2>
+      <button id="biometric-unlock-btn">Simulate Biometric Verification</button>
+      <div id="unlock-message"></div>
+      <button id="back-dashboard-btn2">Back to Dashboard</button>
+    </section>
+    <!-- Admin Section -->
+    <section id="admin-section">
+      <h2>Admin Panel</h2>
+      <div id="admin-metadata"></div>
+      <div id="admin-blockchain"></div>
+      <button id="remove-expired-btn">Remove Expired Capsules</button>
+      <button id="back-dashboard-btn3">Back to Dashboard</button>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 TimeVault. All rights reserved.</p>
+  </footer>
+  <link rel="manifest" href="manifest.json">
+  <script src="assets/js/crypto.js"></script>
+  <script src="assets/js/blockchain.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html> 
